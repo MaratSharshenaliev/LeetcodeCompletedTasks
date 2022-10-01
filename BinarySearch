@@ -1,0 +1,30 @@
+import time
+from typing import List
+
+
+## O(log n) - BINARY SEARCH №1
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums)
+
+        while True:
+            fiveteenProcent = len(nums[left:right]) // 2
+            print(fiveteenProcent)
+            print("int: ", nums[left:right][fiveteenProcent])
+
+            if nums[left:right][fiveteenProcent] == target:
+                return left
+            elif nums[left:right][fiveteenProcent] > target:
+                right -= fiveteenProcent
+            elif nums[left:right][fiveteenProcent] < target:
+                left += fiveteenProcent
+
+            if len(nums[left:right]) == 2 and nums[left] != target or nums[right] != target:
+                return -1
+
+            time.sleep(2)
+
+
+ex = Solution()
+print(ex.search([-1, 0, 3, 5, 9, 12], 2))
