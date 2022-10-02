@@ -25,6 +25,17 @@ class Solution:
 
             time.sleep(2)
 
+    def guessNumber(self, n: int) -> int:
+        
+        start, end = 0, n
+        
+        while start <= end:
+            midddle = (start + end) // 2
+            
+            if guess(midddle) < 0:
+                end = midddle - 1
+            elif guess(midddle) > 0:
+                start = midddle + 1
+            else:
+                return midddle
 
-ex = Solution()
-print(ex.search([-1, 0, 3, 5, 9, 12], 2))
