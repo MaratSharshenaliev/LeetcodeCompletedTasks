@@ -1,0 +1,10 @@
+class Solution:
+    def isPerfectSquare(self, nums: int, Iter: int = 0) -> bool:
+        # print(Iter)
+        # 7: 49 = 1 + 3 + 5 + 7 + 9 + 11 + 13
+        if Iter**2 == nums:
+            return True
+        elif Iter**2 > nums:
+            return False
+        else:
+            return self.isPerfectSquare(nums, Iter + 1)
