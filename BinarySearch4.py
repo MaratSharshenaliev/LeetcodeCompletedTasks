@@ -11,3 +11,16 @@ class Solition:
       if square < x: start = mid + 1
       else: end = mid - 1
       return end
+    
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        
+        st, end = 0, len(letters) - 1
+        if letters[-1] <= target or letters[0] > target:
+                return letters[0]
+        while st<=end:
+            mid=st+(end-st)//2
+            if letters[mid]>target:
+                end=mid-1 
+            elif letters[mid]<=target:
+                st=mid+1 
+        return letters[st] 
