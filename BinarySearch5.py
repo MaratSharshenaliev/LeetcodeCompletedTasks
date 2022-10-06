@@ -1,13 +1,24 @@
-class Solution:
-    def arrangeCoins(self, n: int) -> int:
-        left, right = 1, n
-        while left <= right:
-            mid = (left + right) // 2
-            coins = (mid / 2) * (mid + 1)
-            if coins > n:
-                right = mid - 1
-            elif coins < n:
-                left = mid + 1
-            else:
-                return mid
-        return right
+ 
+ class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def binary_search(nums, target, FindMax):
+            keyIndex = -1
+            start, end = 0, len(nums)-1
+            while start <= end:
+                middle = start + (end-start)//2
+                if nums[middle] < target:
+                    start = middle + 1
+                elif nums[middle] > target:
+                    end = middle - 1
+                else:
+                    keyIndex = middle
+                    if FindMax:
+                        start = middle + 1
+                    else:
+                        end = middle - 1
+            return keyIndex
+        result = [-1, -1]
+        result[0] = binary_search(nums, target, False)
+        if result[0] != -1:
+            result[1] = binary_search(nums, target, True)
+        return result
